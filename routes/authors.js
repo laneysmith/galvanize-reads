@@ -11,6 +11,17 @@ router.get('/authors', function(req, res, next) {
   });
 });
 
+// add an author
+router.get('/authors/new', function(req, res, next) {
+  res.render('author-new');
+});
+
+router.post('/author/new', function(req, res, next) {
+  db.addNewAuthor(req.body).then(function(authorId) {
+    res.redirect('/authors/' + authorId);
+  });
+});
+
 // author detail
 router.get('/authors/:id', function(req, res, next) {
   Promise.all([
@@ -22,5 +33,26 @@ router.get('/authors/:id', function(req, res, next) {
   });
 });
 
+// edit autho
+router.get('/authors/:id/edit', function(req, res, next) {
+  db.getAuthorById(req.params.id).then(function(data) {
+    res.render('author-edit', {author: data});
+  });
+});
+
+router.post('/authors/:id/edit', function(req, res, next) {
+  db.editBook(req.body, req.params.id).then(function() {
+    res.redirect('/authors/' + req.params.id);
+  });
+});
+
+// delete autho
+router.get('/authors/:id/delete', function(req, res, next) {
+  db.deleteBook(req.params.id).then(function() {
+    res.redirect('/authors');
+  }).catch(function (error) {
+    console.log(error);
+  });
+});
 
 module.exports = router;

@@ -1,11 +1,12 @@
-<h2>Edit a {{book.title}}</h2>
+<h2>Edit {{book.title}}</h2>
 
 <form action="/books/{{book.id}}/edit" method="POST">
   <label for="title">Title</label>
   <input id="title" name="title" value="{{book.title}}">
   <label for="genre">Genre</label>
   <select id="genre" name="genre_id">
-    <option value="" disabled selected>Choose a Genre</option>
+    <option value="{{book.genre_id}}" selected>{{book.genre}}</option>
+    <option value="" disabled>------</option>
     {{#each genres}}
         <option value="{{this.id}}">{{this.name}}</option>
     {{/each}}

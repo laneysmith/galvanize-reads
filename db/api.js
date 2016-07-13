@@ -31,7 +31,7 @@ module.exports = {
 	getBookById: function(id) {
 		return knex('book')
 			.join('genre', 'book.genre_id', '=', 'genre.id')
-			.select('book.id as id', 'book.title', 'genre.name as genre', 'book.description', 'book.cover_url')
+			.select('book.id as id', 'book.title', 'genre.name as genre', 'genre.id as genre_id','book.description', 'book.cover_url')
 			.where({'book.id': id})
 			.first();
 	},
@@ -77,5 +77,8 @@ module.exports = {
 			.select()
 			.where({'author.id': id})
 			.first();
+	},
+	addNewAuthor: function(author) {
+		return knex('author').insert(author).returning('id');
 	}
 };

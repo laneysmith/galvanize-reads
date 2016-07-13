@@ -1,4 +1,7 @@
 <h2>Author: {{author.first_name}} {{author.last_name}}</h2>
+<a href="/authors/{{author.id}}/edit"><i class="fa fa-pencil fa-lg"></i> Edit Author</a>
+<a href="/authors/{{author.id}}/delete"><i class="fa fa-remove fa-lg"></i> Delete Author</a>
+
 <section class="author-detail">
   <img src="{{author.portrait_url}}" class="author-portrait">
   Books:

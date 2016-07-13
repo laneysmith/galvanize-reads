@@ -33,7 +33,7 @@ router.get('/authors/:id', function(req, res, next) {
   });
 });
 
-// edit autho
+// edit author
 router.get('/authors/:id/edit', function(req, res, next) {
   db.getAuthorById(req.params.id).then(function(data) {
     res.render('author-edit', {author: data});
@@ -41,7 +41,7 @@ router.get('/authors/:id/edit', function(req, res, next) {
 });
 
 router.post('/authors/:id/edit', function(req, res, next) {
-  db.editBook(req.body, req.params.id).then(function() {
+  db.editAuthor(req.body, req.params.id).then(function() {
     res.redirect('/authors/' + req.params.id);
   });
 });

@@ -80,5 +80,11 @@ module.exports = {
 	},
 	addNewAuthor: function(author) {
 		return knex('author').insert(author).returning('id');
-	}
+	},
+	// deleteAuthor: function(authorId) {
+	// 	return knex('author').where({id: authorId}).del();
+	// },
+	editAuthor: function(author, authorId) {
+		return knex('author').where({id: authorId}).update(author);
+	},
 };

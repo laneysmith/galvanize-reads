@@ -1,7 +1,4 @@
-/*layout.hbs*/
-
 * {
-  outline: 0px solid red;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -9,14 +6,25 @@
 body {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 0.9rem 'Source Sans Pro', sans-serif; sans-serif;
+  line-height: 1.2rem;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+p {
+  padding: 0 0 0.15rem 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Slabo 27px', serif;
+}
+
+/* HEADER & LOGO */
+
 header {
-  padding: 0 50px;
+  padding: 0 100px 0 125px;
   background: hsl(197, 100%, 50%);
   display: flex;
   flex-direction: row;
@@ -25,6 +33,27 @@ header {
   -moz-box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
   box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
 }
+
+h1 {
+  text-shadow:0px 1px 0px hsl(0, 0%, 90%);
+}
+
+h1 a, h1 a:hover {
+  color: hsl(0, 0%, 0%);
+}
+
+#logo {
+  z-index: 100;
+  position: absolute;
+  top: 0px;
+  left: 35px;
+}
+
+#logo img {
+  height: 80px;
+}
+
+/* NAV */
 
 nav {
   display: flex;
@@ -47,19 +76,38 @@ nav ul li {
 nav ul li a {
   color: #fff;
   padding: 10px;
+  text-shadow:0px 1px 0px rgba(140,140,140,0.8);
+  border-radius: 2px 2px 2px 2px;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
 }
 
 nav ul li a:hover {
   background-color: #fff;
   color: #404040;
+  text-shadow: none;
 }
+
+/* MAIN */
 
 main {
   max-width: 700px;
   margin: auto;
-  padding: 0 1rem;
+  padding: 1rem;
   flex: 1;
 }
+
+a {
+  text-decoration: none;
+  color: #00B7FF;
+}
+
+a:hover {
+  color: #404040;
+  transition: all 0.3s ease;
+}
+
+/* FOOTER */
 
 footer {
   padding: 10px 30px;
@@ -70,33 +118,51 @@ footer {
   box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
 }
 
-a {
-  text-decoration: none;
-  color: #00B7FF;
+footer a {
+  color: hsl(0, 0%, 25%);
+  transition: all 0.3s ease;
 }
 
-input, textarea, select {
+footer a:hover {
+  color: hsl(0, 0%, 96%);
+}
+
+/* FORMS & BUTTONS */
+
+input, textarea, select, option {
   display: block;
   width: 300px;
   padding: 0.5rem;
   margin-bottom: 1rem;
+  font-size: 0.8rem;
 }
 
 label {
   font-weight: bold;
 }
 
-.cool-btn {
+textarea {
+  height: 10rem;
+}
+
+.cool-btn, input[type=submit] {
+  font-weight: bold;
+  text-shadow:0px 1px 0px rgba(140,140,140,0.8);
   padding: 8px 25px;
+  border: 0;
   text-align: center;
   color: #fff;
   background-color: hsl(196, 100%, 50%);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
   -moz-box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
   box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
+  border-radius: 2px 2px 2px 2px;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+  transition: all 0.3s ease;
 }
 
-.cool-btn:hover {
+.cool-btn:hover, input[type=submit]:hover {
   padding: 8px 25px;
   text-align: center;
   color: #fff;
@@ -106,10 +172,12 @@ label {
   box-shadow: 0px 0px 5px 0px rgba(140,140,140,1);
 }
 
-/*books.hbs*/
+/* CARDS */
 
 .card {
+  width: auto;
   margin: 2rem 0;
+  padding: 1rem;
   display: flex;
   flex-direction: row;
   background-color: hsl(196, 100%, 95%);
@@ -122,6 +190,26 @@ label {
   max-width: 200px;
 }
 
-.card-img, .card-detail {
-  padding: 1rem;
+.card-detail {
+  padding-left: 1rem;
+}
+
+.open-book {
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .card {
+    flex-direction: column;
+    flex: ;
+  }
+  .card-img, .card-detail {
+    flex: 0;
+  }
+  .card-detail {
+    padding-left: 0;
+  }
+  .card-img img {
+    max-width: 100%;
+  }
 }

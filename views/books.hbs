@@ -1,7 +1,14 @@
 <h2>Books</h2>
+<select id="genre-filter">
+  <option value="" selected>Show All Genres</option>
+  {{#each genres}}
+      <option value="{{this.id}}">{{this.name}}</option>
+  {{/each}}
+</select>
+
 <a href="/books/new" class="cool-btn"><i class="fa fa-plus fa-lg"></i> Add a Book</a>
 {{#each books}}
-<section class="card">
+<section class="card" data-tag="{{this.genre}}">
   <div class="card-img">
     <img src="{{this.cover_url}}">
   </div>

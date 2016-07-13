@@ -5,7 +5,8 @@ module.exports = {
 	getAllBooks: function() {
 		return knex('book')
 			.join('genre', 'book.genre_id', '=', 'genre.id')
-			.select('book.id as id', 'book.title', 'genre.name as genre', 'book.description', 'book.cover_url');
+			.select('book.id as id', 'book.title', 'genre.name as genre', 'book.description', 'book.cover_url')
+			.orderBy('book.title', 'asc');
 	},
 	getAuthorsByBookId: function(bookId) {
 		return knex('author').select('author.first_name', 'author.last_name', 'author.id as author_id')
@@ -44,7 +45,8 @@ module.exports = {
 	},
 	getAllGenres: function() {
 		return knex('genre')
-			.select();
+			.select()
+			.orderBy('name', 'asc');
 	},
 	deleteBook: function(bookId) {
 		return knex('book').where({id: bookId}).del();
@@ -54,7 +56,7 @@ module.exports = {
 	},
 	// for authors routes
 	getAllAuthors: function() {
-		return knex('author').select();
+		return knex('author').select().orderBy('first_name', 'asc');
 	},
 	getBooksByAuthorId: function(authorId) {
 		return knex('book').select('book.title', 'book.id as book_id')

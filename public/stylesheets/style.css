@@ -71,12 +71,13 @@ nav ul {
 nav ul li {
   display: inline;
   width: 100px;
+  font-size: 1rem;
 }
 
 nav ul li a {
   color: #fff;
   padding: 10px;
-  text-shadow:0px 1px 0px rgba(140,140,140,0.8);
+  text-shadow:0px 1px 0px rgba(140,140,140,1);
   border-radius: 2px 2px 2px 2px;
   -moz-border-radius: 2px 2px 2px 2px;
   -webkit-border-radius: 2px 2px 2px 2px;
@@ -86,6 +87,31 @@ nav ul li a:hover {
   background-color: #fff;
   color: #404040;
   text-shadow: none;
+}
+
+.menu-icons {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .menu-text {
+    display: none;
+  }
+  .menu-icons {
+    display: inline;
+  }
+  header {
+    padding: 0 20px 0 100px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  #logo {
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+  }
 }
 
 /* MAIN */

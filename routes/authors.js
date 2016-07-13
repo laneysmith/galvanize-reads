@@ -16,6 +16,7 @@ router.get('/new', function(req, res, next) {
 
 router.post('/new', function(req, res, next) {
   db.addNewAuthor(req.body).then(function(authorId) {
+    console.log('authorId=', authorId);
     res.redirect('/authors/' + authorId);
   });
 });

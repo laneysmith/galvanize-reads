@@ -1,16 +1,20 @@
 <h2>Author: {{author.first_name}} {{author.last_name}}</h2>
-<a href="/authors/{{author.id}}/edit"><i class="fa fa-pencil fa-lg"></i> Edit Author</a>
-<a href="/authors/{{author.id}}/delete"><i class="fa fa-remove fa-lg"></i> Delete Author</a>
+<a href="/authors/{{author.id}}/edit" class="cool-btn"><i class="fa fa-pencil fa-lg"></i> Edit Author</a>
+<a href="/authors/{{author.id}}/delete" class="cool-btn"><i class="fa fa-remove fa-lg"></i> Delete Author</a>
 
-<section class="author-detail">
-  <img src="{{author.portrait_url}}" class="author-portrait">
-  Books:
-  <ul>
-    {{#each books}}
-      <li><a href="/books/{{this.book_id}}">{{this.title}}</a></li>
-    {{/each}}
-  </ul>
-  <p>
-    {{author.bio}}
-  </p>
+<section class="card">
+  <div class="card-img">
+    <img src="{{author.portrait_url}}">
+  </div>
+  <div class="card-detail">
+    <b>{{author.first_name}} {{author.last_name}}</b><br>
+    <ul>
+      {{#each books}}
+        <li><a href="/books/{{this.book_id}}">{{this.title}}</a></li>
+      {{/each}}
+    </ul>
+    <p>
+      {{author.bio}}
+    </p>
+  </div>
 </section>

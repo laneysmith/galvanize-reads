@@ -1,14 +1,19 @@
 <h2>Book: {{book.title}}</h2>
-<a href="/books/{{book.id}}/edit"><i class="fa fa-pencil fa-lg"></i> Edit Book</a>
-<a href="/books/{{book.id}}/delete"><i class="fa fa-remove fa-lg"></i> Delete Book</a>
+<a href="/books/{{book.id}}/edit" class="cool-btn"><i class="fa fa-pencil fa-lg"></i> Edit Book</a>
+<a href="/books/{{book.id}}/delete" class="cool-btn"><i class="fa fa-remove fa-lg"></i> Delete Book</a>
 
-<section class="book-detail">
-  <img src="{{book.cover_url}}" class="book-cover">
-  {{#each authors}}
-    <a href="/authors/{{this.author_id}}">{{this.first_name}} {{this.last_name}}</a>
-  {{/each}}
-  <p>
+<section class="card">
+  <div class="card-img">
+    <img src="{{book.cover_url}}">
+  </div>
+  <div class="card-detail">
+    <b>{{book.title}}</b><br>
+    {{#each authors}}
+      <a href="/authors/{{this.author_id}}">{{this.first_name}} {{this.last_name}}</a>
+    {{/each}}<br>
     <i>{{book.genre}}</i><br>
-    {{book.description}}
-  </p>
+    <p>
+      {{book.description}}
+    </p>
+  </div>
 </section>

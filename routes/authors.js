@@ -46,9 +46,9 @@ router.post('/authors/:id/edit', function(req, res, next) {
   });
 });
 
-// delete autho
+// delete author
 router.get('/authors/:id/delete', function(req, res, next) {
-  db.deleteBook(req.params.id).then(function() {
+  db.deleteAuthor(req.params.id).then(function() {
     res.redirect('/authors');
   }).catch(function (error) {
     console.log(error);

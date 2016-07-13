@@ -43,14 +43,10 @@ module.exports = {
 			.select();
 	},
 	deleteBook: function(bookId) {
-		//
-		// knex('book_author').where({book_id: bookId}).del().then(function() {
-	  //   knex('book').where({id: bookId}).del().then(function() {
-	  //     res.redirect('/books');
-	  //   });
-	  // })
-
 		return knex('book').where({id: bookId}).del();
+	},
+	editBook: function(book, bookId) {
+		return knex('book').where({id: bookId}).update(book);
 	},
 	// for authors routes
 	getAllAuthors: function() {

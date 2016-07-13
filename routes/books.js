@@ -23,9 +23,7 @@ router.get('/books/new', function(req, res, next) {
 });
 
 router.post('/books/new', function(req, res, next) {
-  console.log(req.body);
   db.addNewBook(req.body).then(function(bookId) {
-    console.log('book id =', bookId);
     res.redirect('/books/' + bookId);
   });
 });
@@ -38,6 +36,22 @@ router.get('/books/:id', function(req, res, next) {
   ]).
   then(function(data) {
     res.render('book-detail', {book: data[0], authors: data[1]});
+  });
+});
+
+// edit book
+router.get('/books/:id/edit', function(req, res, next) {
+  Promise.all([
+    db.getBookById(req.params.id),
+    db.getAllGenres()
+  ]).then(function(data) {
+    res.render('book-edit', {book: data[0], genres: data[1]});
+  });
+});
+
+router.post('/books/:id/edit', function(req, res, next) {
+  db.editBook(req.body, req.params.id).then(function() {
+    res.redirect('/books/' + req.params.id);
   });
 });
 

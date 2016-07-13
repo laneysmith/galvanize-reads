@@ -21,12 +21,13 @@ module.exports = {
 					return this.getAuthorsByBookId(book.id)
 						.then(function(authors) {
               book.authors = authors;
-              // console.log(book);
               return book;
 						});
 				});
 			}
-    );
+    ).then(function (data) {
+	    return Promise.all(data);
+	  });
 	},
 	getBookById: function(id) {
 		return knex('book')
@@ -73,7 +74,9 @@ module.exports = {
 						});
 				});
 			}
-    );
+    ).then(function (data) {
+	    return Promise.all(data);
+	  });
 	},
 	getAuthorById: function(id) {
 		return knex('author')

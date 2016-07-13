@@ -4,9 +4,7 @@ var db = require('../db/api');
 
 // list all books
 router.get('', function(req, res, next) {
-  db.listBooksWithAuthors().then(function (data) {
-    return Promise.all(data);
-  }).then(function(books) {
+  db.listBooksWithAuthors().then(function(books) {
     res.render('books', {books: books});
   });
 });

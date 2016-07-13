@@ -35,6 +35,13 @@ module.exports = {
 			.where({'book.id': id})
 			.first();
 	},
+	addNewBook: function(book) {
+		return knex('book').insert(book).returning('id');
+	},
+	getAllGenres: function() {
+		return knex('genre')
+			.select();
+	},
 	// for authors routes
 	getAllAuthors: function() {
 		return knex('author').select();

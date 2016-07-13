@@ -1,3 +1,5 @@
+/*layout.hbs*/
+
 * {
   outline: 1px solid red;
 }
@@ -51,7 +53,8 @@ nav ul li a:hover {
 }
 
 main {
-  padding: 0 30px;
+  max-width: 700px;
+  margin: auto;
   flex: 1;
 }
 
@@ -67,4 +70,23 @@ footer {
 a {
   text-decoration: none;
   color: #00B7FF;
+}
+
+input, label {
+  display: block;
+}
+
+/*books.hbs*/
+
+.books {
+  display: flex;
+  flex-direction: row;
+}
+
+.book-cover {
+  flex: 1;
+  flex-basis: 200px;
+  height: 200px;
+  /*min-width: 100px;*/
+  max-width: 200px;
 }

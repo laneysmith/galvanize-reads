@@ -1,11 +1,12 @@
 <h2>Books</h2>
+<a href="/books/new"><i class="fa fa-plus fa-lg"></i> Add a Book</a>
 {{#each books}}
 <section class="books">
   <img src="{{this.cover_url}}" class="book-cover">
   <p>
     <b><a href="/books/{{this.id}}">{{this.title}}</a></b><br>
     {{#each this.authors}}
-      {{first_name}} {{last_name}}
+      <a href="/authors/{{author_id}}">{{first_name}} {{last_name}}</a>
     {{/each}}<br>
     <i>{{this.genre}}</i><br>
     {{this.description}}

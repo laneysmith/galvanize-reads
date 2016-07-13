@@ -41,5 +41,14 @@ router.get('/books/:id', function(req, res, next) {
   });
 });
 
+// delete book
+router.get('/books/:id/delete', function(req, res, next) {
+  db.deleteBook(req.params.id).then(function() {
+    res.redirect('/books');
+  }).catch(function (error) {
+    console.log(error);
+  });
+});
+
 
 module.exports = router;

@@ -42,6 +42,16 @@ module.exports = {
 		return knex('genre')
 			.select();
 	},
+	deleteBook: function(bookId) {
+		//
+		// knex('book_author').where({book_id: bookId}).del().then(function() {
+	  //   knex('book').where({id: bookId}).del().then(function() {
+	  //     res.redirect('/books');
+	  //   });
+	  // })
+
+		return knex('book').where({id: bookId}).del();
+	},
 	// for authors routes
 	getAllAuthors: function() {
 		return knex('author').select();

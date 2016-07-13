@@ -1,4 +1,6 @@
 <h2>Book: {{book.title}}</h2>
+<a href="/books/{{book.id}}/delete"><i class="fa fa-remove fa-lg"></i> Delete Book</a>
+
 <section class="book-detail">
   <img src="{{book.cover_url}}" class="book-cover">
   {{#each authors}}

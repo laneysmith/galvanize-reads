@@ -6,9 +6,9 @@
     <img src="{{this.cover_url}}">
   </div>
   <div class="card-detail">
-    <b><a href="/books/{{this.id}}">{{this.title}}</a></b><br>
+    <b><a href="/books/{{this.id}}">{{this.title}}</a></b>
     {{#each this.authors}}
-      <a href="/authors/{{author_id}}">{{first_name}} {{last_name}}</a>
+      <br><a href="/authors/{{author_id}}">{{first_name}} {{last_name}}</a>
     {{/each}}<br>
     <i>{{this.genre}}</i><br>
     {{this.description}}

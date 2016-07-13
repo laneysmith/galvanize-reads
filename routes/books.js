@@ -23,8 +23,18 @@ router.get('/books/new', function(req, res, next) {
 });
 
 router.post('/books/new', function(req, res, next) {
-  db.addNewBook(req.body).then(function(bookId) {
-    res.redirect('/books/' + bookId);
+  var newBook = {
+    title: req.body.title,
+    genre_id: req.body.genre_id,
+    description: req.body.description,
+    cover_url: req.body.cover_url
+  };
+  var authorId = req.body.author_id;
+  db.addNewBook(newBook).then(function(bookId) {
+    db.addBookAuthorRelationship(bookId[0], authorId).then(function() {
+      res.redirect('/books/' + bookId);
+    }
+  );
   });
 });
 

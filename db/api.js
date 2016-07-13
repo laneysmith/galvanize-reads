@@ -38,6 +38,9 @@ module.exports = {
 	addNewBook: function(book) {
 		return knex('book').insert(book).returning('id');
 	},
+	addBookAuthorRelationship: function(bookId, authorId) {
+		return knex('book_author').insert({book_id: bookId, author_id: authorId}).returning('book_id');
+	},
 	getAllGenres: function() {
 		return knex('genre')
 			.select();

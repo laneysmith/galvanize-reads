@@ -3,6 +3,14 @@
 <form action="/books/new" method="POST">
   <label for="title">Title</label>
   <input id="title" name="title">
+  <label for="author_id">Author</label>
+  (<a href="/authors/new">Click here</a> to add an author)
+  <select id="author_id" name="author_id">
+    <option value="" disabled selected>Choose an Author</option>
+    {{#each authors}}
+        <option value="{{this.id}}">{{this.first_name}} {{this.last_name}}</option>
+    {{/each}}
+  </select>
   <label for="genre">Genre</label>
   <select id="genre" name="genre_id">
     <option value="" disabled selected>Choose a Genre</option>

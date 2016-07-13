@@ -1,14 +1,12 @@
 var knex = require('./knex');
 
 module.exports = {
+	// for books routes
 	getAllBooks: function() {
 		return knex('book')
 			.join('genre', 'book.genre_id', '=', 'genre.id')
 			.select('book.id as id', 'book.title', 'genre.name as genre', 'book.description', 'book.cover_url');
 	},
-  getAllAuthors: function() {
-    return knex('author').select();
-  },
 	getAuthorsByBookId: function(bookId) {
 		return knex('author').select('author.first_name', 'author.last_name')
 			.innerJoin('book_author', 'author.id', 'book_author.author_id')
@@ -16,7 +14,7 @@ module.exports = {
 				'book_author.book_id': bookId
 			});
 	},
-	listAuthorsWithBooks: function() {
+	listBooksWithAuthors: function() {
 		return this.getAllBooks()
 			.then((returnedBooks) => {
 				return returnedBooks.map((book) => {
@@ -29,6 +27,29 @@ module.exports = {
 				});
 			}
     );
+	},
+	// for authors routes
+	getAllAuthors: function() {
+		return knex('author').select();
+	},
+	getBooksByAuthorId: function(authorId) {
+		return knex('book').select('book.title', 'book.id as book_id')
+			.innerJoin('book_author', 'book.id', 'book_author.book_id')
+			.where({
+				'book_author.author_id': authorId
+			});
+	},
+	listAuthorsWithBooks: function() {
+		return this.getAllAuthors()
+			.then((returnedAuthors) => {
+				return returnedAuthors.map((author) => {
+					return this.getBooksByAuthorId(author.id)
+						.then(function(books) {
+              author.books = books;
+              return author;
+						});
+				});
+			}
+    );
 	}
-
 };

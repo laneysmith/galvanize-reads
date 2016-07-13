@@ -1,0 +1,11 @@
+<h2>Book: {{book.title}}</h2>
+<section class="book-detail">
+  <img src="{{book.cover_url}}" class="book-cover">
+  {{#each authors}}
+    <a href="/authors/{{this.author_id}}">{{this.first_name}} {{this.last_name}}</a>
+  {{/each}}
+  <p>
+    <i>{{book.genre}}</i><br>
+    {{book.description}}
+  </p>
+</section>

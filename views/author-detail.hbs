@@ -1,0 +1,13 @@
+<h2>Author: {{author.first_name}} {{author.last_name}}</h2>
+<section class="author-detail">
+  <img src="{{author.portrait_url}}" class="author-portrait">
+  Books:
+  <ul>
+    {{#each books}}
+      <li><a href="/books/{{this.id}}">{{this.title}}</a></li>
+    {{/each}}
+  </ul>
+  <p>
+    {{author.bio}}
+  </p>
+</section>

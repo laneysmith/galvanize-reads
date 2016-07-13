@@ -8,7 +8,7 @@ module.exports = {
 			.select('book.id as id', 'book.title', 'genre.name as genre', 'book.description', 'book.cover_url');
 	},
 	getAuthorsByBookId: function(bookId) {
-		return knex('author').select('author.first_name', 'author.last_name')
+		return knex('author').select('author.first_name', 'author.last_name', 'author.id as author_id')
 			.innerJoin('book_author', 'author.id', 'book_author.author_id')
 			.where({
 				'book_author.book_id': bookId
@@ -27,6 +27,13 @@ module.exports = {
 				});
 			}
     );
+	},
+	getBookById: function(id) {
+		return knex('book')
+			.join('genre', 'book.genre_id', '=', 'genre.id')
+			.select('book.id as id', 'book.title', 'genre.name as genre', 'book.description', 'book.cover_url')
+			.where({'book.id': id})
+			.first();
 	},
 	// for authors routes
 	getAllAuthors: function() {
@@ -51,5 +58,11 @@ module.exports = {
 				});
 			}
     );
+	},
+	getAuthorById: function(id) {
+		return knex('author')
+			.select()
+			.where({'author.id': id})
+			.first();
 	}
 };
